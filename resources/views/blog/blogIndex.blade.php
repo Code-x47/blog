@@ -397,12 +397,16 @@
                         </div>
                         <div class="bg-white text-center border border-top-0 p-3">
                             <p>Send Us Your Email To Recieve Intresting NewsLetters from us</p>
-                            <div class="input-group mb-2" style="width: 100%;">
-                                <input type="text" class="form-control form-control-lg" placeholder="Your Email">
+                               <form action="/newsletter" method="Post">
+                                <div class="input-group mb-2" style="width: 100%;">
+                                 @csrf
+                                <input type="text" class="form-control form-control-lg" name="email" placeholder="Your Email">
                                 <div class="input-group-append">
-                                    <button class="btn btn-primary font-weight-bold px-3">Sign Up</button>
+                                    <button class="btn btn-primary font-weight-bold px-3" type="submit">Sign Up</button>
                                 </div>
-                            </div>
+                                
+                                </div>
+                               </form>
                             <small>Format: JohnDoe@yahoo.com</small>
                         </div>
                     </div>

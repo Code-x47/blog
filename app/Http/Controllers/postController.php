@@ -7,9 +7,13 @@ use App\Models\Sport;
 use App\Models\Latest;
 use App\Models\Business;
 use App\Models\Politics;
+use App\Models\Newsletter;
 use Illuminate\Http\Request;
 use App\Models\Entertainment;
+use App\Events\userSubscribed;
+use App\Mail\userSubscribedMail;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class postController extends Controller
 
@@ -73,7 +77,7 @@ public function createFood(Request $req){
     $food->file2 = $fileDoc2;
     $food->user_id = auth()->id();
     $food->save();
-    //$req->session()->Flash("flashkey",$tiltle);
+
     return redirect('/foodpost');
 
 }
@@ -108,7 +112,7 @@ public function createPol(Request $req){
     $biz->file2 = $filename2;
     $biz->user_id = auth()->id();
     $biz->save();
-    //$req->session()->Flash("flashkey",$tiltle);
+
     return redirect('/polpost');
 }
 //END OF CREATE POLITICS POST
@@ -145,7 +149,7 @@ public function createEnt(Request $req){
     $biz->file2 = $filename2;
     $biz->user_id = auth()->id();
     $biz->save();
-    //$req->session()->Flash("flashkey",$tiltle);
+    
     return redirect('/entpost');
 }
 //END OF CREATE ENTERTAINMENT POST
@@ -198,6 +202,20 @@ public function createLatest(Request $req){
  
  //END OF CREATE LATEST POST STARTS
  
+ 
+ //NEWSLETTER EVENT AND LISTENER CONTROLLER STARTS
 
+
+ public function newsletter(Request $req) {
+    $req->validate([
+       "email"=>"Required",
+    ]);
+
+
+    event(new userSubscribed($req->email));
+    return back();
+  }
+
+  //NEWSLETTER EVENT AND LISTENER CONTROLLER ENDS
 
 }

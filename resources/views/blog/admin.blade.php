@@ -148,7 +148,7 @@
                                     <th scope="col">Email</th>
                                     <th scope="col">Country</th>
                                     <th scope="col">UserType</th>
-                                    <th scope="col">position</th>
+                                    <th scope="col">Roles</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
@@ -160,7 +160,13 @@
                                     <td>{{$user['email']}}</td>
                                     <td>{{$user['country']}}</td>
                                     <td>{{$user['usertype']}}</td>
-                                    <td>N/A</td>
+                                    @if($user->role_id == 1)
+                                    <td>User</td>
+                                    @elseif($user->role_id == 2)
+                                    <td>Admin</td>
+                                    @else
+                                    <td>Manager</td>
+                                    @endif
                                     <td>
                                     <a class="btn btn-sm btn-success" href="">Update</a>
                                     @can("task_delete")

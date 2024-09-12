@@ -1,11 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\commentControl;
 use App\Http\Controllers\postController;
 use App\Http\Controllers\testController;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\viewController;
-use App\Http\Controllers\commentControl;
+use App\Http\Controllers\eventController;
 
 /*
 |--------------------------------------------------------------------------
@@ -176,6 +177,13 @@ Route::get("/foodpost/{id}",[commentControl::class,"back2Food"]);
 
 
 /*COMMENT CONTROLLER ROUTES ENDS*/
+
+
+/*EVENT CONTROLLER STARTS HERE*/
+
+Route::Post("newsletter",[postController::class,"newsletter"]);
+
+/*EVENT CONTROLLER ENDS HERE*/
 
 
 

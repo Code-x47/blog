@@ -360,7 +360,7 @@ public function viewEntPost(){
 
    return view("blog.entPost",compact("view","view2","admin","admin2"));
 }
-
+//TASK ASSIGNMENT USING ROLES AND PERMISSION
 public function editEntPost($id){
   $this->authorize("task_edit_post");
   $edit = Entertainment::find($id);
